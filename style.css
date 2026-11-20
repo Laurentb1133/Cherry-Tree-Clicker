@@ -1,0 +1,195 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5eee5;
+    overflow: hidden;
+}
+
+/* HEADER */
+header {
+    height: 80px;
+    background: #e8d5c0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    color: #5b4030;
+}
+
+header h1 {
+    font-size: 25px;
+}
+
+#clickCount {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* BOUTIQUE */
+#shop {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 280px;
+    height: calc(100vh - 80px);
+    background: #fffaf4;
+    padding: 20px;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
+}
+
+#shop.open {
+    transform: translateX(0);
+}
+
+#menuButton,
+#closeShop {
+    border: none;
+    background: #9b755b;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#closeShop {
+    margin-bottom: 20px;
+}
+
+.tree-card {
+    background: #f1e3d5;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 10px;
+}
+
+.tree-card button {
+    margin-top: 8px;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #9b755b;
+    color: white;
+}
+
+/* ZONE DE JEU */
+#treeArea {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 125px);
+    overflow: hidden;
+}
+
+/* TRONC - INCHANGÉ */
+#trunk {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 135px;
+    height: 100%;
+    background: var(--treeColor, #dfc9b2);
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+}
+
+/* BÂTON / BRANCHE */
+#branch {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    width: 350px;
+    height: 45px;
+    background: var(--treeColor, #dfc9b2);
+    transform: translateY(-50%);
+    border-radius: 25px;
+    z-index: 2;
+}
+
+/* BUISSON OVALE AU BOUT DU BÂTON */
+#flowerBush {
+    position: absolute;
+    left: calc(50% + 350px);
+    top: 48%;
+    width: 160px;
+    height: 90px;
+    background: #f3b6cc;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: inset -8px -8px 0 #eaa5bf;
+    z-index: 3;
+}
+
+/* GOUTTES DE SÈVE BLANCHE */
+.sap {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+    animation: sapJet 0.8s ease-out forwards;
+}
+
+@keyframes sapJet {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--sapX), var(--sapY)) scale(0.3);
+    }
+}
+
+/* INSTRUCTIONS */
+#instructions {
+    text-align: center;
+    color: #8b6b54;
+    font-size: 16px;
+    padding: 10px;
+}
+
+/* PETITS ÉCRANS */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 17px;
+    }
+
+    #clickCount {
+        font-size: 15px;
+    }
+
+    #shop {
+        width: 240px;
+    }
+
+    #trunk {
+        width: 100px;
+    }
+
+    #branch {
+        width: 250px;
+        height: 35px;
+    }
+
+    #flowerBush {
+        width: 120px;
+        height: 70px;
+        left: calc(50% + 250px);
+    }
+}
+
